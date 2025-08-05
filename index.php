@@ -19,15 +19,15 @@
 			
 			<form id="login-form">
 				<label>Name</label>
-				<input id="scouter-name-input" class="w3-input" type="text">
+				<input id="scouter-name-input" class="w3-input w3-round" type="text">
 				<br>
 				
 				<label>Match Number</label>
-				<input id="match-number-input" class="w3-input" type="text">
+				<input id="match-number-input" class="w3-input w3-round" type="number">
 				<br>
 				
 				<label>Robot Number</label>
-				<input id="robot-number-input" class="w3-input" type="text">
+				<input id="robot-number-input" class="w3-input w3-round" type="number">
 				<br>
 				
 				<button id="login-btn" class="w3-btn w3-cobalt">Scout Robot</button>
@@ -36,38 +36,22 @@
 		
 		<div id="scouting">
 			<h1 id="match-title"></h1>
+			
+			<label>Auton Notes</label>
+			<textarea id="auton-notes" class="w3-input w3-round" rows="4" autofocus></textarea>
+			<br>
+			
+			<label>Teleop Notes</label>
+			<textarea id="teleop-notes" class="w3-input w3-round" rows="8"></textarea>
+			<br>
+			
+			<label>Endgame Notes</label>
+			<textarea id="endgame-notes" class="w3-input w3-round" rows="3" autofocus></textarea>
+			<br>
+			
+			<button id="save-report-btn" class="w3-btn w3-cobalt">Save Report</button>
 		</div>
 		
-		<script>
-			// Class to contain scouting reports
-			class ScoutingReport {
-				constructor(robotNumber, matchNumber) {
-					this.robotNumber = robotNumber;
-					this.matchNumber = matchNumber;
-				}
-			}
-			
-			var currentReport;
-			
-			document.getElementById("scouting").style.display = "none"; // hide scouting form to start
-			
-			const welcomeForm = document.getElementById("login-form");
-						
-			function startScouting() {
-				document.getElementById("welcome").style.display = "none";
-				document.getElementById("scouting").style.display = "block";
-				
-				currentReport = new ScoutingReport(document.getElementById("robot-number-input").value, document.getElementById("match-number-input").value);
-				console.log("Scouting " + currentReport.robotNumber + " in match " + currentReport.matchNumber);
-				document.getElementById("match-title").innerHTML = "Scouting " + currentReport.robotNumber + " in match " + currentReport.matchNumber;
-			}
-			
-			
-			document.getElementById("login-btn")
-				.addEventListener("click", function (event) {
-					event.preventDefault();
-					startScouting();
-				});
-		</script>
+		<script src="script.js"></script>
 	</body>
 </html>
